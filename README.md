@@ -1,6 +1,6 @@
 # Overview 
 
-This repository documents the Multi-Layer Contagion Model I developed at the BIS Innovation Hub in London, hosted by the Bank of England. This project was written in collaboration with the BIS and was in part-fulfillment of my MSc Data Science and Economics at UCL. 
+This repository documents the Multi-Layer Contagion Model I developed at the BIS Innovation Hub in London, hosted by the Bank of England. This project was written in collaboration with the BIS and was in part-fulfillment of my MSc in Data Science and Economics at UCL. 
 
 The code base covers the entire pipeline from taking real-world bank balance sheet data and converting it into a multi-layer node level input data. Then by stochastically simulating 10 000 networks using Cimini et al. (2015) link probability fitness model, representing 12 million bilateral exposures we shock each network throguh 3 scenarios to simulate contagion within the networks, this is performed using the DebtRank algorithm. From these outputs we can then analyse how topology mitigates or catalyses contagion.
 
