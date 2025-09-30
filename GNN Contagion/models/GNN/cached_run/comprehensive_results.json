@@ -1,0 +1,39 @@
+{
+  "default_prediction": {
+    "f1_score": 0.8412614980289094,
+    "roc_auc": 0.9998143577510528,
+    "accuracy": 0.9983498620331667,
+    "precision": 0.7309888102306462,
+    "recall": 0.9907149489322191,
+    "specificity": 0.9983837086614281,
+    "confusion_matrix": [
+      [
+        727651,
+        1178
+      ],
+      [
+        30,
+        3201
+      ]
+    ],
+    "risk_stratified_f1": {
+      "low_risk": 0.9742033383915023,
+      "medium_risk": 0.8288914638856701,
+      "high_risk": 0.7654402102496715
+    }
+  },
+  "systemic_risk_prediction": {
+    "r2_score": 0.9456185698509216,
+    "rmse": 0.014927520661488154,
+    "mae": 0.005768236704170704,
+    "correlation": 0.9729226764948492
+  },
+  "combined_performance": {
+    "weighted_score": 0.872568619575513
+  },
+  "timing": {
+    "total_inference_time": 9.402415037155151,
+    "average_inference_time": 0.051100081723669304,
+    "predictions_per_second": 77858.72003173095
+  }
+}

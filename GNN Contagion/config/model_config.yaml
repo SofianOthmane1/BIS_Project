@@ -1,0 +1,157 @@
+# GNN Model Configuration
+# Feature Engineering Configuration
+feature_config:
+  node_features:
+    - total_assets
+    - capital
+    - capital_ratio
+    - bank_tier
+    - lgd
+    - leverage_ratio
+    - total_interbank_assets
+    - total_interbank_liabilities
+    - derivatives_exposure
+    - securities_exposure
+    - fx_exposure
+    - deposits_loans_exposure
+  
+  log_transform_features:
+    - total_assets
+    - capital
+    - total_interbank_assets
+    - total_interbank_liabilities
+    - derivatives_exposure
+    - securities_exposure
+    - fx_exposure
+    - deposits_loans_exposure
+
+# Model Architecture
+model_architecture:
+  hidden_dim: 128
+  num_layers: 4
+  num_heads: 8
+  dropout: 0.3
+
+# Optimizer Configuration
+optimizer:
+  lr: 0.0001
+  weight_decay: 0.0001
+
+# Learning Rate Scheduler
+scheduler:
+  mode: 'min'
+  factor: 0.5
+  patience: 10
+  min_lr: 1.0e-6
+
+# Training Configuration
+training:
+  batch_size: 16
+  epochs: 150
+  early_stopping_patience: 20
+  gradient_clipping: true
+  max_grad_norm: 1.0
+  default_loss_weight: 0.3
+  systemic_risk_loss_weight: 2.0
+
+# Data Configuration
+data:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  stratified_split: true
+  stratification_key: "systemic_risk_level"
+  feature_normalization: "robust"
+  handle_missing: "forward_fill"
+  self_loops: false
+  normalize_adjacency: true
+  log_transform_assets: true
+  winsorize_outliers: true
+  winsorize_percentiles: [0.01, 0.99]
+
+# DebtRank Simulation Configuration
+debtrank:
+  convergence_threshold: 1e-6
+  max_iterations: 1000
+  recovery_rate: 0.4
+  failure_threshold: 0.2
+  stress_threshold: 0.05
+  
+  shock_types:
+    - "largest_bank"
+    - "random_bank"
+    - "tier_2_bank"
+  
+  scenarios_per_network: 1
+  default_shock_type: "largest_bank"
+  
+  layer_propagation_weights:
+    derivatives: 1.0
+    securities: 1.0
+    fx: 1.0
+    deposits_loans: 1.0
+    firesale: 1.0
+
+# Evaluation Metrics
+evaluation:
+  classification_metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "auc_roc"
+    - "auc_pr"
+    - "specificity"
+  
+  financial_metrics:
+    - "systemic_risk_rmse"
+    - "tier_wise_accuracy"
+    - "false_alarm_rate"
+  
+  benchmark_against_debtrank: true
+  timing_analysis: true
+  memory_analysis: true
+  scalability_analysis: true
+  
+  efficiency_metrics:
+    - "inference_time_ratio"
+    - "memory_usage_ratio"
+    - "throughput_comparison"
+
+# Logging Configuration
+logging:
+  log_level: "INFO"
+  log_file: "gnn_training.log"
+  use_tensorboard: true
+  experiment_name: "financial_contagion_gnn"
+  save_checkpoints: true
+  checkpoint_frequency: 25
+  save_best_only: true
+
+# Hardware Configuration
+hardware:
+  use_gpu: true
+  gpu_device: 0
+  mixed_precision: true
+  pin_memory: true
+  num_workers: 2
+  prefetch_factor: 2
+  gradient_accumulation_steps: 1
+
+# Output Configuration
+output:
+  save_model: true
+  model_format: "pytorch"
+  save_predictions: true
+  save_metrics: true
+  export_formats:
+    - "json"
+    - "csv"
+  create_plots: true
+  plot_formats: ["png"]
+  plot_dpi: 300
+
+# Research Configuration
+research:
+  random_seed: 42
+  deterministic_mode: true

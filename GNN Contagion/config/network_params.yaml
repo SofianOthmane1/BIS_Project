@@ -1,0 +1,176 @@
+# Network Generation Parameters for Multi-Layer Financial Contagion Modelling
+# Based on Halaj-Kok framework
+
+# Network Generation Configuration
+network_generation:
+  total_networks: 10000
+  
+  # Network layers representing different interbank exposure types
+  layers:
+    - derivatives       # Derivatives (A contract in which the value is derived from an underlying asset)
+    - securities        # Securities cross-holdings (Repos)
+    - fx                # Foreign exchange transactions (E.g. A currency forward)
+    - deposits_loans    # Deposits and loans (overnight loans, interbank lending)
+  
+  # Target density parameters for stochastic generation
+  density_params:
+    deposits_loans: { mean: 0.01105, std: 0.004 }
+    securities: { mean: 0.00505, std: 0.0020 }
+    derivatives: { mean: 0.00365, std: 0.0016 }
+    fx: { mean: 0.00170, std: 0.0006 }
+    firesale: { mean: 0.00750, std: 0.0010 }
+  
+  # Beta distribution parameters for density variations
+  density_variation:
+    use_beta_distribution: true
+    beta_params:
+      derivatives: { alpha: 2.0, beta: 8.0 }
+      securities: { alpha: 2.5, beta: 7.0 }
+      fx: { alpha: 1.5, beta: 12.0 }
+      deposits_loans: { alpha: 3.0, beta: 6.0 }
+      firesale: { alpha: 1.2, beta: 15.0 }
+
+# Propensity Calculation Configuration
+propensity_calculation:
+  baseline_connectivity: 0.3
+  
+  propensity_weights:
+    baseline_weight: 1.0
+    size_weight: 1.0
+    activity_weight: 1.0
+  
+  size_centrality:
+    normalisation: "max"
+    use_sqrt_product: true
+  
+  activity_centrality:
+    normalisation: "max"
+    use_sqrt_product: true
+  
+  economic_scaling:
+    enabled: true
+    scaling_formula: "multiplicative"
+  
+  stochastic_variation:
+    enabled: true
+    distribution: "uniform"
+    preserve_ranking: true
+
+# RAS Algorithm Configuration
+ras_algorithm:
+  max_iterations: 5000
+  tolerance: 1.0e-5
+  min_fitness_assets_frac: 0.02
+  min_fitness_liab_frac: 0.02
+  
+  active_set:
+    alpha: 0.8
+    beta: 0.8
+    size_bias_weight: 0.6
+    gamma: 0.5
+    force_min_topk: 5
+  
+  degree_constraints:
+    union_max_out_frac_n: 0.20
+    union_max_in_frac_n: 0.25
+    
+    per_layer:
+      deposits_loans: { max_out_frac_n: 0.15, max_in_frac_n: 0.20 }
+      securities: { max_out_frac_n: 0.12, max_in_frac_n: 0.15 }
+      fx: { max_out_frac_n: 0.10, max_in_frac_n: 0.12 }
+      derivatives: { max_out_frac_n: 0.10, max_in_frac_n: 0.12 }
+  
+  fx_tweaks:
+    edge_power_alpha: 0.005
+    use_netting: true
+    cap_quantile: 0.99
+    shrink_alpha: 0.60
+    fitness_scale: 2.0e-4
+  
+  report_union_stats: true
+
+# Node Processing Parameters
+node_processing:
+  node_count: 248
+  
+  core_features:
+    - total_assets
+    - total_equity
+    - capital_ratio
+    - interbank_assets
+    - interbank_liabilities
+    - lgd
+    - leverage_ratio
+    - bank_tier
+  
+  layer_exposures:
+    - derivatives_exposure
+    - securities_exposure
+    - fx_exposure
+    - deposits_loans_exposure
+  
+  tier_classification:
+    method: "asset_percentiles"
+    large_threshold: 95
+    medium_threshold: 75
+  
+  outlier_handling:
+    method: "winsorize"
+    percentiles: [0.01, 0.99]
+  
+  missing_value_strategy: "median_fill"
+  scaling_method: "robust"
+
+# Batch Processing Configuration
+batch_processing:
+  networks_per_batch: 800
+  total_batches: 200
+  parallel_workers: 4
+  output_format: "numpy_compressed"
+  file_naming: "network_{batch_id:04d}_{network_id:06d}"
+  save_intermediate: false
+  validate_networks: true
+  cleanup_temp_files: true
+  max_memory_per_worker: "2GB"
+
+# Validation
+validation:
+  connectivity_check: true
+  min_edges_per_layer: 10
+  max_edges_per_layer: 100000
+  balance_sheet_consistency: true
+  exposure_magnitude_bounds: true
+  calculate_basic_metrics: true
+  
+  metrics_to_calculate:
+    - "density"
+    - "clustering_coefficient"
+    - "average_path_length"
+    - "degree_distribution"
+  
+  min_network_density: 0.0001
+  max_network_density: 0.01
+  save_validation_reports: true
+  save_diagnostic_plots: false
+  reject_invalid_networks: true
+  max_regeneration_attempts: 3
+
+# Stochastic Generation Control
+randomisation:
+  use_random_seeds: true
+  base_seed: 42
+  seed_increment: 1
+  ensure_topology_diversity: true
+  jaccard_similarity_threshold: 0.95
+  systemic_risk_diversity: true
+
+# Output Configuration
+output_configuration:
+  adjacency_format: "sparse_csr"
+  weights_format: "float32"
+  save_generation_params: true
+  save_validation_metrics: true
+  save_propensity_stats: false
+  upload_to_cloud: true
+  local_cleanup: true
+  compression_level: 6

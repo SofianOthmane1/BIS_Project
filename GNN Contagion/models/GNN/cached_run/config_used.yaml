@@ -1,0 +1,209 @@
+data:
+  augmentation:
+    enabled: false
+  feature_normalization: robust
+  handle_missing: forward_fill
+  largest_component_only: false
+  log_transform_assets: true
+  normalize_adjacency: true
+  self_loops: false
+  stratification_key: systemic_risk_level
+  stratified_split: true
+  test_ratio: 0.1
+  train_ratio: 0.8
+  val_ratio: 0.1
+  winsorize_outliers: true
+  winsorize_percentiles:
+  - 0.01
+  - 0.99
+debtrank:
+  convergence_threshold: 1e-6
+  default_shock_type: largest_bank
+  failure_threshold: 0.2
+  fire_sale_discount: 0.075
+  layer_propagation_weights:
+    deposits_loans: 1.0
+    derivatives: 1.0
+    firesale: 1.0
+    fx: 1.0
+    securities: 1.0
+  max_iterations: 1000
+  recovery_rate: 0.4
+  scenarios_per_network: 1
+  shock_types:
+  - largest_bank
+  - random_bank
+  - tier_2_bank
+  stress_threshold: 0.05
+evaluation:
+  benchmark_against_debtrank: true
+  classification_metrics:
+  - accuracy
+  - precision
+  - recall
+  - f1_score
+  - auc_roc
+  - auc_pr
+  - specificity
+  cross_validation:
+    enabled: true
+    folds: 5
+    stratified: true
+  efficiency_metrics:
+  - inference_time_ratio
+  - memory_usage_ratio
+  - throughput_comparison
+  financial_metrics:
+  - systemic_risk_rmse
+  - tier_wise_accuracy
+  - false_alarm_rate
+  memory_analysis: true
+  scalability_analysis: true
+  timing_analysis: true
+feature_config:
+  log_transform_features:
+  - total_assets
+  - capital
+  - total_interbank_assets
+  - total_interbank_liabilities
+  - derivatives_exposure
+  - securities_exposure
+  - fx_exposure
+  - deposits_loans_exposure
+  node_features:
+  - total_assets
+  - capital
+  - capital_ratio
+  - bank_tier
+  - lgd
+  - leverage_ratio
+  - total_interbank_assets
+  - total_interbank_liabilities
+  - derivatives_exposure
+  - securities_exposure
+  - fx_exposure
+  - deposits_loans_exposure
+hardware:
+  dataloader_persistent_workers: true
+  gpu_device: 0
+  gradient_accumulation_steps: 1
+  mixed_precision: true
+  num_workers: 2
+  pin_memory: true
+  prefetch_factor: 2
+  use_gpu: true
+hyperparameter_optimization:
+  enabled: false
+  max_trials: 30
+  method: bayesian
+  search_space:
+    dropout:
+    - 0.2
+    - 0.3
+    - 0.4
+    hidden_dim:
+    - 64
+    - 128
+    - 256
+    learning_rate:
+    - 1e-4
+    - 5e-4
+    - 1e-3
+    num_heads:
+    - 4
+    - 8
+    - 12
+    num_layers:
+    - 3
+    - 4
+    - 5
+    weight_decay:
+    - 1e-5
+    - 1e-4
+    - 1e-3
+  timeout_hours: 12
+interpretability:
+  attention_layer_analysis: true
+  attention_visualization: true
+  feature_importance: true
+  feature_importance_method: integrated_gradients
+  network_analysis:
+    centrality_correlation: true
+    layer_contribution: true
+    tier_importance: true
+  regulatory_explanations:
+    critical_connections: true
+    failure_pathways: true
+    systemic_indicators: true
+  save_attention_weights: true
+logging:
+  checkpoint_frequency: 25
+  experiment_name: financial_contagion_gnn
+  log_attention_patterns: true
+  log_failure_predictions: true
+  log_file: gnn_training.log
+  log_financial_metrics: true
+  log_level: INFO
+  save_best_only: true
+  save_checkpoints: true
+  use_tensorboard: true
+  use_wandb: false
+model_architecture:
+  dropout: 0.3
+  hidden_dim: 128
+  num_heads: 8
+  num_layers: 4
+optimizer:
+  lr: 0.0001
+  weight_decay: 0.0001
+output:
+  create_plots: true
+  export_formats:
+  - pickle
+  - json
+  - csv
+  - parquet
+  model_format: pytorch
+  network_visualizations:
+    attention_heatmaps: true
+    comparative_performance_plots: true
+    failure_cascade_plots: true
+    systemic_risk_distributions: true
+  plot_dpi: 300
+  plot_formats:
+  - png
+  - pdf
+  - svg
+  save_architecture: true
+  save_attention_weights: true
+  save_feature_importance: true
+  save_metrics: true
+  save_model: true
+  save_predictions: true
+research:
+  ablation_studies:
+    attention_ablation: true
+    feature_ablation: true
+    layer_ablation: true
+    multi_layer_ablation: true
+  deterministic_mode: true
+  generalization_tests:
+    cross_density_validation: true
+    cross_shock_validation: true
+    temporal_robustness: false
+  generate_latex_tables: true
+  generate_publication_plots: true
+  random_seed: 42
+  statistical_significance_tests: true
+scheduler:
+  factor: 0.5
+  mode: min
+  patience: 10
+training:
+  batch_size: 16
+  default_loss_weight: 1.0
+  early_stopping_patience: 20
+  epochs: 150
+  gradient_clipping: true
+  max_grad_norm: 1.0
+  systemic_risk_loss_weight: 0.5

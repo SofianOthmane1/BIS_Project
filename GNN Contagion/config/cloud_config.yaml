@@ -1,0 +1,135 @@
+# Cloud Infrastructure Configuration for Distributed Network Generation
+
+# Cloud Provider
+cloud_provider: "gcp"
+
+# Google Cloud Platform Configuration
+gcp:
+  project_id: "YOUR_PROJECT_ID"
+  project_number: "YOUR_PROJECT_NUMBER"
+  api_key: "YOUR_API_KEY"
+  
+  # Compute Region and Zone
+  region: "us-central1"
+  zone: "us-central1-a"
+  
+  # Instance Configuration
+  instance_type: "e2-highcpu-2"
+  machine_image: "projects/debian-cloud/global/images/family/debian-11"
+  
+  # Storage Configuration
+  storage_bucket: "YOUR_BUCKET_NAME"
+  bucket_location: "us-central1"
+  
+  # Compute Settings
+  disk_size: 50
+  disk_type: "pd-ssd"
+  preemptible: true
+  
+  # Network Settings
+  network: "default"
+  subnet: "default"
+  
+  # Service Account
+  service_account_email: "YOUR_SERVICE_ACCOUNT@YOUR_PROJECT_ID.iam.gserviceaccount.com"
+
+# Network Generation Configuration
+network_generation:
+  total_networks: 10000
+  networks_per_batch: 800
+  min_instances: 1
+  max_instances: 20
+  instances_per_batch: 4
+  instance_timeout_minutes: 45
+  max_retries: 3
+  retry_delay_seconds: 60
+
+# Distributed Processing
+distributed:
+  job_queue_type: "cloud-tasks"
+  queue_location: "us-central1"
+  max_concurrent_jobs: 20
+  progress_update_interval: 300
+  health_check_interval: 120
+  log_level: "INFO"
+  validate_networks: true
+  validation_sample_rate: 0.1
+
+# Data Storage Configuration
+data_storage:
+  networks_bucket: "YOUR_NETWORKS_BUCKET"
+  results_bucket: "YOUR_RESULTS_BUCKET"
+  logs_bucket: "YOUR_LOGS_BUCKET"
+  
+  network_file_prefix: "network_"
+  network_file_format: "npz"
+  results_file_format: "parquet"
+  
+  compression: true
+  compression_level: 6
+  chunk_size_mb: 25
+  parallel_uploads: 6
+  
+  delete_temp_files: true
+  archive_after_days: 30
+  delete_after_days: 365
+
+# Security Configuration
+security:
+  encrypt_at_rest: true
+  encrypt_in_transit: true
+  use_iam: true
+  restrict_api_access: true
+  allowed_ip_ranges:
+    - "0.0.0.0/0"
+  enable_os_login: true
+  enable_shielded_vm: true
+
+# Cost Management
+cost_management:
+  auto_shutdown_enabled: true
+  shutdown_after_idle_minutes: 20
+  use_preemptible: true
+  preemptible_retry_limit: 3
+  daily_budget_usd: 100
+  total_budget_usd: 500
+  budget_alert_threshold: 0.8
+  auto_scaling_enabled: true
+  scale_down_threshold: 30
+  scale_up_threshold: 70
+
+# Monitoring Configuration
+monitoring:
+  enable_monitoring: true
+  enable_logging: true
+  track_network_generation_rate: true
+  track_storage_usage: true
+  track_cost_per_network: true
+  alert_on_failures: true
+  alert_on_budget_exceeded: true
+  alert_on_completion: true
+  notification_email: "YOUR_EMAIL@example.com"
+
+# Development Settings
+development:
+  test_networks_count: 10
+  test_instance_type: "e2-micro"
+  debug_mode: false
+  verbose_logging: false
+  save_intermediate_files: false
+
+# Research Configuration
+research:
+  node_count: 248
+  network_layers:
+    - "derivatives"
+    - "securities"
+    - "fx"
+    - "deposits_loans"
+  debtrank_enabled: true
+  shock_scenarios:
+    - "largest_bank"
+    - "random_bank"
+    - "tier_2_bank"
+  output_file_pattern: "network_{batch_id:04d}_{network_id:06d}.npz"
+  results_file_pattern: "debtrank_results_{batch_id:04d}.parquet"

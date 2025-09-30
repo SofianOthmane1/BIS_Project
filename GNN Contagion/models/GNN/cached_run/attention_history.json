@@ -1,0 +1,431 @@
+[
+  {
+    "epoch": 9,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 19,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 29,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 39,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 49,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 59,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 69,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 79,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 89,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 99,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  },
+  {
+    "epoch": 109,
+    "high_attention_edges": [
+      {
+        "layer": 0,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 1,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 2,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      },
+      {
+        "layer": 3,
+        "edges": [
+          [],
+          []
+        ],
+        "scores": []
+      }
+    ],
+    "attention_by_layer_type": {},
+    "shocked_bank_attention": []
+  }
+]
